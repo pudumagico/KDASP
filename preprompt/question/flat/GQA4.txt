@@ -1,0 +1,55 @@
+4. Question Representation
+
+Consider the following ASP representation for natural language questions.
+The representation shows the steps needed to solve the question.
+The first number of each predicate indicates the output step.
+The rest of the numbers indicate the input steps.
+In this way chains of predicates are joint together to represent the reasoning steps needed to answer the question.
+
+scene(S): Initializes all objects at step S.
+select(S, I, O): Selects object O at step S, based on input I.
+relate(S, I, O, R, Sub): Establishes relationship R between O and Sub at S.
+unique(S, I): Asserts uniqueness of an object from I at S.
+query(S, I, A): Queries attribute A of an object from I at S.
+end(S): Concludes query at S.
+filter(S, I, A, V): Filters objects by A and V at S.
+relate_any(S, I, R, Sub): Establishes a general R at S.
+filter_any(S, I, A): Filters objects by A presence at S.
+negate(S, I, P): Negates condition from I at S.
+exist(S, I): Checks existence of I at S.
+verify_attr(S, I, A, V): Verifies A with V of I at S.
+all_same(S, I, A): Checks if all from I share A.
+choose_attr(S, I, A, O1, O2): Chooses between O1 and O2 for A at S.
+choose_rel(S, I, O, R1, R2, Sub): Chooses between R1 and R2 at S.
+common(S, I1, I2): Finds commonality between I1 and I2 at S.
+two_different(S, I1, I2, A): Compares I1 and I2 for different A at S.
+two_same(S, I1, I2, A): Compares I1 and I2 for same A at S.
+and(S, I1, I2): Logical AND of I1 and I2 at S.
+or(S, I1, I2): Logical OR of I1 and I2 at S.
+compare(S, I1, I2, C, B): Compares I1 and I2 based on condition C and boolean B at S.
+
+Examples of questions are the following, separated by rows of #:
+scene(0).
+select(1, 0, animal).
+all_same(2, 1, class).
+end(2).
+#########
+scene(0).
+all_different(2, 1, class).
+end(2).
+#########
+scene(0).
+select(1, 0, pizza).
+exist(2, 1).
+end(2).
+#########
+scene(0).
+select(1, 0, bed).
+exist(2, 1).
+end(2).
+#########
+scene(0).
+select(1, 0, animal).
+all_same(2, 1, class).
+end(2).
+#########

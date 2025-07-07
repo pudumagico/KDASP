@@ -1,0 +1,37 @@
+Please consider the following ASP encoding:
+
+obj(5,1,purple). obj(4,4,orange). obj(0,9,purple). obj(8,0,blue). obj(7,1,green).
+
+ans(Z, yes) :- question(Z), Z = left(obj(X1,Y1,C1), obj(X2,Y2,C2)), X1<X2.
+ans(Z, no) :- not ans(Z, yes), question(Z).
+
+:- not ans(_,_).
+
+It takes a externally defined predicate question(X), where X is a question related to the objects defined at the beginning. These objects are of the form obj(X,Y,C) with X,Y coordinates and C a color.
+In this case the base encoding can handle questions that ask if an object is to the left of another one.
+Some examples of questions we can handle are:
+
+question(left(obj(4,4,orange),obj(5,1,purple)))
+question(left(obj(0,9,purple),obj(5,1,purple)))
+question(left(obj(0,9,purple),obj(4,4,orange)))
+question(left(obj(5,1,purple),obj(8,0,blue)))
+question(left(obj(4,4,orange),obj(8,0,blue)))
+question(left(obj(0,9,purple),obj(8,0,blue)))
+question(left(obj(7,1,green),obj(8,0,blue)))
+question(left(obj(5,1,purple),obj(7,1,green)))
+question(left(obj(4,4,orange),obj(7,1,green)))
+question(left(obj(0,9,purple),obj(7,1,green)))
+
+Your task is to help me to extend this encoding as more question may appear that cannot be handle at the moment.
+Can you extend this encoding so we can handle the following questions? Only extend the encoding with rules to compute the correct answer.
+
+question(above(obj(8,0,blue),obj(7,1,green))) 
+question(above(obj(8,0,blue),obj(4,4,orange))) 
+question(right(obj(8,0,blue),obj(0,9,purple))) 
+question(right(obj(7,1,green),obj(0,9,purple))) 
+question(below(obj(7,1,green),obj(8,0,blue))) 
+question(below(obj(0,9,purple),obj(8,0,blue))) 
+question(below(obj(5,1,purple),obj(8,0,blue))) 
+question(below(obj(4,4,orange),obj(7,1,green))) 
+question(above(obj(5,1,purple),obj(0,9,purple))) 
+question(above(obj(7,1,green),obj(0,9,purple)))

@@ -1,0 +1,12 @@
+5. Answer Representation.
+
+The answer computed by the theory will always be in a predicate of the form 'ans(X)', where 'X' is the expected answer.
+'X' can be a boolean, yes or no, it can be an attribute, it can be a relation or the value of some attribute.
+
+Examples of these are:
+ans(yes)
+ans(red)
+ans(man)
+ans(left)
+ans(pose)
+

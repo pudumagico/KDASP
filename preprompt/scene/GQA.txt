@@ -1,0 +1,30 @@
+3. Scene Representation
+
+Consider the following ASP representation for the objects in an image.
+
+Object Declaration: Each object(<id>) declares a unique object with a specific identifier. 
+For example, object(1279158) declares an object with the ID 1279158.
+Attributes (has_attr): The has_attr(<object_id>, <attribute>, <value>) facts define various attributes of an object. 
+For example, has_attr(1279158, class, tree) means the object with ID 1279158 is classified as a "tree". Attributes cover a range of properties like class, name, color, hposition (horizontal position), vposition (vertical position), and more.
+Relations (has_rel): The has_rel(<object_id1>, <relation>, <object_id2>) facts describe the relationships between two objects. 
+For example, has_rel(1279158, to_the_right_of, 1279150) indicates that the object 1279158 is to the right of the object 1279150.
+Each object in this set of facts seems to represent an element in a larger scene or model, 
+with attributes that describe its characteristics (like class, color, position) and relations that describe its spatial or logical connections to other elements in the scene. 
+For example, objects are classified into categories like tree, wheel, wing, etc., and their positions are described in relation to other objects (e.g., to_the_right_of, below, near).
+
+An excerpt of an example of such an encoding is the following:
+
+object(1120957).
+has_attr(1120957, class, jet).
+has_attr(1120957, vposition, middle).
+object(1120970).
+has_attr(1120970, class, window).
+has_rel(1120970, to_the_right_of, 1120977).
+has_rel(1120970, to_the_right_of, 1120980).
+object(1120964).
+has_attr(1120964, class, shirt).
+has_attr(1120964, name, shirt).
+has_attr(1120964, vposition, middle).
+has_rel(1120964, to_the_left_of, 1120963).
+...
+

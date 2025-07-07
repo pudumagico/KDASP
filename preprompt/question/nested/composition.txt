@@ -1,0 +1,9 @@
+Extend now the encoding to handle these questions:
+question(and(above(obj(8,0,blue),obj(7,1,green)),right(obj(7,1,green),obj(0,9,purple))))
+question(and(above(obj(8,0,blue),obj(7,1,green)),below(obj(0,9,purple),obj(8,0,blue))))
+question(and(above(obj(8,0,blue),obj(7,1,green)),below(obj(5,1,purple),obj(8,0,blue))))
+question(and(above(obj(8,0,blue),obj(7,1,green)),below(obj(4,4,orange),obj(7,1,green))))
+question(and(above(obj(8,0,blue),obj(4,4,orange)),right(obj(8,0,blue),obj(0,9,purple))))
+question(and(above(obj(8,0,blue),obj(4,4,orange)),right(obj(7,1,green),obj(0,9,purple))))
+question(and(above(obj(8,0,blue),obj(4,4,orange)),below(obj(7,1,green),obj(8,0,blue))))
+question(and(above(obj(8,0,blue),obj(4,4,orange)),below(obj(0,9,purple),obj(8,0,blue))))

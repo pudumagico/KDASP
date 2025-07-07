@@ -1,0 +1,21 @@
+3. Scene Representation
+
+Consider the following ASP representation for a metro graph.
+
+It consists of possibly multiple predicates of the form 'node(N,C)', where N is the name of the station and C is the color,
+'edge(N1,N2,C)', where N1,N2 are names and C is the color of the edge and 'line(C)', where C is the color of the metro line.
+
+An excerpt of an example of such an encoding is the following:
+
+node(vuirst,olive).
+node(schnoms,olive).
+node(mccreofy,olive).
+node(crirg,olive).
+edge(crirg,schnoms,cyan).
+edge(reiards,niath,pink).
+edge(niath,skoack,pink).
+line(olive).
+line(cyan).
+line(pink).
+.....
+

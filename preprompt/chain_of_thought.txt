@@ -1,0 +1,8 @@
+You are also required to produce a chain of thought using the predicates in the theory,
+showing how you arrived to the correct answer using them.
+Output a line for each predicate used.
+Separate the response rules from the chain of thought by a line of three asterisks.
+The first predicate must be scene and the last predicate must be ans.
+Only output one line per predicate used. 
+Do not output state predicates.
+No rules should be below the three asterisks.

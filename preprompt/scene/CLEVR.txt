@@ -1,0 +1,15 @@
+3. Scene Representation
+
+Consider the following ASP representation for the objects in an image.
+
+It consists of possibly multiple predicates of the form 'obj(ID,X,Y,M,C,F,S)',
+where 'ID' is a unique ID that defines the object, 'X, Y' are coordinates between 0 and 10, 
+'M' is a material, 'C' is a color, 'F' is a form and 'S' is a size.
+An excerpt of an example of such an encoding is the following:
+
+obj(0,324,201,rubber,purple,sphere,large).
+obj(1,282,166,rubber,purple,cylinder,small).
+obj(2,216,94,metal,blue,sphere,large).
+obj(3,127,115,metal,green,cube,large).
+...
+

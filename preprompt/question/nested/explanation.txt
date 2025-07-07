@@ -1,0 +1,11 @@
+Consider the following ASP representation for questions about objects.
+It consists of a singular predicate 'question(X)', where 'X' represents a simple or composite question.
+Simple questions are those composed by a singular predicate. Examples of these are:
+question(above(obj(8,0,blue),obj(7,1,green))) 
+question(right(obj(8,0,blue),obj(0,9,purple))) 
+question(below(obj(0,9,purple),obj(8,0,blue))) 
+Composite questions are those where the question is made of subquestions and composed by the connectives and, or, not.
+For this we need to unpack the subquestions and solve them to solve the complete question. Examples of these are:
+question(and(above(obj(8,0,blue),obj(4,4,orange)),right(obj(7,1,green),obj(0,9,purple))))
+question(or(above(obj(8,0,blue),obj(4,4,orange)),below(obj(7,1,green),obj(8,0,blue))))
+question(not(above(obj(8,0,blue),obj(4,4,orange))))

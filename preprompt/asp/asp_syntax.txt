@@ -1,0 +1,38 @@
+2. Answer Set Programming Syntax
+
+Answer Set Programming (ASP) is a form of declarative programming oriented towards difficult search problems. 
+Its syntax and usage can be summarized as follows:
+
+Rules: The basic building block of an ASP program. A rule has a head and a body, and is written in the form: Head :- Body. 
+It means that if the body is true, then the head is also true.
+Predicates in the Body are separated by commas, and not semicolons as in Prolog.
+For example: flies(tweety) :- bird(tweety), not penguin(tweety).
+
+Atoms: These are the basic propositions and can be any string of characters and numbers starting with a lowercase letter.
+
+Literals: An atom or its negation. The negation used in ASP is negation as failure, denoted by not. 
+For example, not a means that a cannot be proven to be true.
+
+Facts: These are rules without a body, stating something that is unconditionally true. 
+For example: bird(tweety).
+
+Constraints: These are rules without a head, used to eliminate certain answers. 
+For example, :- not fly(tweety). states that any answer set where tweety does not fly is not acceptable.
+
+Choice Rules: These allow for the generation of multiple answers, expressing that atoms can be freely chosen to be in the answer set. 
+For example, {fish(tweety);bird(tweety)} :- penguin(tweety). means that the penguin tweety may be a fish, a bird or none.
+
+Comments: In ASP, comments start with a % and continue to the end of the line. They are ignored by the ASP solver.
+
+In ASP, the use of ; to represent logical disjunction in the body of a rule is not allowed. 
+Instead, we need to express disjunction through separate rules. 
+
+In ASP, a variable in a rule is considered unsafe when a variable appears in the head of a rule or in a negative literal in the body, but not in a positive literal.
+Examples of Unsafe Variables:
+
+% Example 1: Unbound Y in negated predicate, S and T in regular predicates
+p1(X) :- not q(X,Y), r(S), s(T).
+
+% Example 2: Unbound Y in negated predicate, S in regular predicate, T in negated predicate
+p2(X, B) :- not q(Y), r(S), not s(T).
+

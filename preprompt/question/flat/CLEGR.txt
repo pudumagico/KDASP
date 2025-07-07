@@ -1,0 +1,117 @@
+4. Question Representation
+
+Consider the following ASP representation for natural language questions.
+The representation shows the steps needed to solve the question.
+
+The representation is related to a problem involving graph traversal or analysis, 
+where nodes represent stations and edges represent connections (or lines) between those stations. 
+The variables and predicates in the questions can be interpreted as follows:
+
+end(stepNumber):
+
+    Description: Indicates the end of the computation or query process. The stepNumber defines the step number at which this stage occurs.
+    Variables: stepNumber (an integer indicating the computation step).
+
+countNodesBetween(stepNumber):
+
+    Description: Counts the number of nodes between two specified stations minus 1.
+    Variables: stepNumber (an integer indicating the computation step).
+
+shortestPath(stepNumber):
+
+    Description: Finds the shortest path between two stations or nodes.
+    Variables: stepNumber (an integer indicating the computation step).
+
+station(stepNumber, stationName):
+
+    Description: Refers to a specific station in the context of the query. The stationName can be replaced with the name or identifier of a station.
+    Variables: stepNumber (an integer indicating the computation step), stationName (a string or variable representing the station's name).
+
+shortestPathAvoid(stepNumber, avoidList):
+
+    Description: Finds the shortest path while avoiding certain nodes or stations.
+    Variables: stepNumber (an integer indicating the computation step), avoidList (a list of station or node identifiers to avoid).
+
+withinHops(stepNumber, hops):
+
+    Description: Identifies stations or nodes within a certain number of hops.
+    Variables: stepNumber (an integer indicating the computation step), hops (an integer representing the maximum number of hops).
+
+closestArch(stepNumber, archName):
+
+    Description: Finds the closest arch (a connection or link between nodes) based on the given name or identifier.
+    Variables: stepNumber (an integer indicating the computation step), archName (a string or variable representing the arch's name).
+
+paths(stepNumber):
+
+    Description: Identifies paths between stations or nodes.
+    Variables: stepNumber (an integer indicating the computation step).
+
+cycle(stepNumber):
+
+    Description: Identifies a cycle (a path that starts and ends at the same station or node).
+    Variables: stepNumber (an integer indicating the computation step).
+
+adjacent(stepNumber):
+
+    Description: Identifies nodes or stations that are adjacent to each other.
+    Variables: stepNumber (an integer indicating the computation step).
+
+adjacentTo(stepNumber):
+
+    Description: Finds stations or nodes adjacent to a specific station or node.
+    Variables: stepNumber (an integer indicating the computation step).
+
+adjacentArch(stepNumber, archName):
+
+    Description: Finds arches adjacent to a specified station or node.
+    Variables: stepNumber (an integer indicating the computation step), archName (a string or variable representing the arch's name).
+
+commonStation(stepNumber):
+
+    Description: Finds common stations between paths or connections.
+    Variables: stepNumber (an integer indicating the computation step).
+
+exist(stepNumber):
+
+    Description: Checks for the existence of a specific station or node in the network.
+    Variables: stepNumber (an integer indicating the computation step).
+
+linesOnNames(stepNumber):
+
+    Description: Identifies lines based on their names.
+    Variables: stepNumber (an integer indicating the computation step).
+
+linesOnCount(stepNumber):
+
+    Description: Counts the number of lines passing through a station or node.
+    Variables: stepNumber (an integer indicating the computation step).
+
+sameLine(stepNumber):
+
+    Description: Checks whether two or more stations or nodes are on the same line.
+    Variables: stepNumber (an integer indicating the computation step).
+
+stations(stepNumber):
+
+    Description: Refers to multiple stations, possibly in relation to a line or path.
+    Variables: stepNumber (an integer indicating the computation step).
+
+line(stepNumber, lineName):
+
+    Description: Refers to a specific line in the context of the query. The lineName can be replaced with the name or identifier of a line.
+    Variables: stepNumber (an integer indicating the computation step), lineName (a string or variable representing the line's name).
+
+mostArch(stepNumber, archName):
+
+    Description: Finds the arch with the most connections or weight in the network.
+    Variables: stepNumber (an integer indicating the computation step), archName (a string or variable representing the arch's name).
+
+Examples of questions are the following, separated by rows of #:
+end(2).linesOnNames(1).station(0, joith).
+##########
+end(2).commonStation(1).station(0, pfarm).station(0, khieuty).
+##########
+end(2).cycle(1).station(0, striaolt).
+##########
+end(2).withinHops(1, 2).station(0, spriouch)

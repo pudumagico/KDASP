@@ -1,0 +1,45 @@
+Consider the following ASP representation for natural language questions.
+
+Scene Selection (scene(0)):
+    This step initializes the context or sets the scene for the query. It's like selecting the frame of reference or the dataset upon which the subsequent operations will be performed.
+
+Select Operation (select):
+    select(ID, reference, object): This operation is used to identify and focus on a specific object or element within the scene.
+        ID: Unique identifier for this step.
+        Reference: Points to the previous step or context.
+        Object: The subject of interest (e.g., car, jacket, paddle).
+
+Existence Check (exist), Uniqueness Check (unique), and Relationship Establishment (relate, relate_any):
+    exist(ID, reference): Checks if the selected object exists in the scene.
+    unique(ID, reference): Ensures that the selected object is unique or distinct in the scene.
+    relate(ID, reference, object, relationship, subject): Establishes a specific relationship between two elements (e.g., a person wearing a jacket).
+        ID: Step identifier.
+        Reference: Points to the previous step.
+        Object/Subject: Elements involved in the relationship.
+        Relationship: The nature of the connection between the elements (e.g., wearing, to_the_left_of).
+
+Attribute Query and Verification (query, verify_attr, verify_rel):
+    query(ID, reference, attribute): Asks for a specific attribute of the selected object (e.g., color, name).
+    verify_attr(ID, reference, attribute, value): Checks if the selected object has a specific attribute with a given value.
+    verify_rel(ID, reference, object, relationship, subject): Verifies a specific relationship between two elements.
+        ID: Step identifier.
+        Reference: Points to the last relevant step.
+        Attribute: The characteristic being queried or verified.
+        Value: The specific value of the attribute being checked.
+
+Filtering and Negation (filter, negate):
+    filter(ID, reference, attribute, value): Filters the selected objects based on a specific attribute and value.
+    negate(ID, reference, object): Negates or excludes a specific object or attribute from consideration.
+        ID: Step identifier.
+        Reference: Points to the previous step.
+        Attribute/Value: Criteria for filtering.
+
+Logical Operations (and, or):
+    and(ID, reference1, reference2): Combines two conditions or steps logically with an AND operation.
+    or(ID, reference1, reference2): Combines two conditions or steps logically with an OR operation.
+        ID: Step identifier.
+        Reference1, Reference2: Pointers to the steps being logically combined.
+
+End of Query (end(ID)):
+    Marks the conclusion of the query sequence.
+

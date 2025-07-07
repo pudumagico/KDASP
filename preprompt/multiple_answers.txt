@@ -1,0 +1,2 @@
+Consider you must output 5 different possibilities of the rules that need to be implemented.
+The rule sets must be separated by a line of three asterisks.

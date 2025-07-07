@@ -1,0 +1,124 @@
+4. Question Representation
+
+Consider the following ASP representation for natural language questions.
+The representation shows the steps needed to solve the question.
+The first number of each predicate indicates the output step.
+The rest of the numbers indicate the input steps.
+In this way chains of predicates are joint together to represent the reasoning steps needed to answer the question.
+
+scene(X): 
+    Indicates the start of a new scene or a situation.
+    X: Identifier for the scene.
+
+filter_property(X)
+    Applies a filter based on a property (e.g., color, size, material) to objects in the scene.
+    X: Identifier for the filter operation, or a specific property value.
+
+unique(X)
+    Specifies that the previous filter operation results in a unique object.
+    X: Identifier linked to the outcome of the filter.
+
+relate_direction(X):
+    Defines a spatial relationship between objects.
+    X: Specifies the identifier for the relationship.
+
+and(X, Y)
+    Logical AND operation, often used to combine conditions.
+    X, Y: Identifiers of the conditions or scenes to be combined.
+
+and(X, Y)
+    Logical OR operation, often used to combine conditions.
+    X, Y: Identifiers of the conditions or scenes to be combined.
+
+query_attribute(X)
+    Requests information about a particular attribute (e.g., color, material, shape) of the object.
+    X: Identifier for the query operation.
+
+exist(X)
+    Asserts the existence of objects meeting previous criteria.
+    X: Optionally identifies the particular existence check.
+
+end(X)
+    Marks the end of the query or scene description.
+    X: Identifier that concludes the scene or query.
+
+equal_[attribute](X, Y)
+    Compares two attributes to assert equality.
+    X, Y: Identifiers of the attributes or scenes being compared.
+
+same_attribute
+    Asserts that two or more objects share the same attribute (e.g., size, material).
+    X: Identifier for the comparison operation.
+
+count(X)
+    Count the objects that meet the criteria set before this predicate.
+    X: Identifier for the count operation.
+
+Examples of questions are the following, separated by rows of #:
+scene(0).
+filter_small(1).
+filter_cyan(2).
+filter_rubber(3).
+unique(4).
+relate_right(5).
+scene(6).
+filter_gray(7).
+filter_metal(8).
+unique(9).
+relate_behind(10).
+and(11,6).
+unique(12).
+query_shape(13).
+end(14).
+##############
+scene(0).
+filter_green(1).
+filter_metal(2).
+filter_cylinder(3).
+unique(4).
+relate_front(5).
+filter_cylinder(6).
+unique(7).
+relate_left(8).
+filter_small(9).
+filter_rubber(10).
+filter_sphere(11).
+unique(12).
+relate_front(13).
+filter_metal(14).
+filter_cube(15).
+unique(16).
+query_color(17).
+end(18).
+##############
+scene(0).
+filter_large(1).
+filter_green(2).
+filter_metal(3).
+unique(4).
+same_shape(5).
+filter_small(6).
+filter_yellow(7).
+exist(8).
+end(9).
+##############
+scene(0).
+filter_blue(1).
+unique(2).
+relate_right(3).
+filter_rubber(4).
+filter_cylinder(5).
+count(6).
+scene(7).
+filter_large(8).
+filter_rubber(9).
+filter_cube(10).
+unique(11).
+relate_behind(12).
+filter_brown(13).
+filter_rubber(14).
+filter_cylinder(15).
+count(16).
+equal_integer(17,7).
+end(18).
+##############

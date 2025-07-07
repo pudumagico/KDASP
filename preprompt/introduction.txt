@@ -1,0 +1,11 @@
+1. Introduction
+We are in the domain of Visual Question Answering.
+The task consists of taking an image and question related to it as input and produce as output the correct answer.
+
+We have already preprocessed both the image and question into correct Answer Set Programming representations.
+Scene/Question pairs of ASP facts serve as the instance for an ASP program which we call the Theory.
+This is a collection of rules that handles the input instance and calculates the correct answer.
+
+Your task is to help us expand the Theory with new rules as new instances of questions appear.
+We will first give you some definitions in the following sections and then present the concrete task.
+

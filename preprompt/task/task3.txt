@@ -1,0 +1,26 @@
+7. Your Task.
+
+Your task is to keep the ASP theory updated with rules that allows us to handle questions.
+We provide an initial theory that can handle some instances.
+The prompt input will consist of one or more questions in the ASP representation.
+If there is a single question, it will come with its associated ASP scene encoding.
+If there are multiple questions, they are separeted by # symbols.
+
+Your task is to take questions and add rules to the theory such that it is able to handle them.
+
+THIS IS VERY IMPORTANT! 
+IF YOU BREAK ANY OF THESE RULES THE OUTPUT IS WRONG!
+
+1. Only output the new ASP Rules.
+2. Do not add output ASP facts.
+3. New rules should be as general as possible, i.e., avoid using constants.
+4. Do not use Code Block Format when returning the new rules, just plain text.
+5. Do not add any unsafe rules.
+6. You may add multiple rules if you are not sure, but these should not contradict themselves.
+7. Do not add comments nor output explanations.
+8. Do not output any natural language.
+9. Prefer to output many rules if they use less constants than a single rule with constants.
+
+Only OUTPUT THE NEW RULES IN PLAIN TEXT.
+Do not output anything that are not explicit ASP rules.
+If you output any natural language, the answer is WRONG! 

@@ -1,0 +1,19 @@
+Consider the following ASP representation for natural language questions.
+
+Scene Initialization (scene(0)): This sets the context or starting point for the query, defining the environment in which the subsequent commands operate.
+Unary Predicates (pred(output_step, input_step)): These predicates constitute the main body of the questions and take as input the result of the step_id and returns the output for the output_step.
+Binary Predicates (pred(output_step, input_step1, input_step2)): These predicates take two inputs from input_step1 and input_step2 and return the results for output_step
+End of Query (end(step)): Marks the conclusion of the query sequence.
+
+These sequences are a series of logical steps in ASP to query and manipulate a dataset, focusing on objects with specific attributes or in certain relations to other objects. 
+Each sequence represents a different type of query, ranging from simple existence checks to complex relational and attribute-based queries.
+
+An example of a question encoded is:
+
+scene(0).
+select(1, 0, aircraft).
+filter(2, 1, color, blue).
+unique(3, 2).
+query(4, 3, name).
+end(4).
+

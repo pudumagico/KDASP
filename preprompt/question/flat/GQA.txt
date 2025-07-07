@@ -1,0 +1,25 @@
+Consider the following ASP representation for natural language questions.
+
+Scene Initialization (scene(0)): This sets the context or starting point for the query, defining the environment in which the subsequent commands operate.
+Selection (select(id, parent_id, object_type)): This command selects objects of a certain type (e.g., 'aircraft' or 'airplane') from the scene. It serves as the basis for further filtering or querying.
+Filtering (filter(id, parent_id, attribute, value)): This applies a filter to the previously selected objects, narrowing down the results based on specific attributes (e.g., color, material, size).
+Existence Check (exist(id, parent_id)): This checks for the existence of certain objects within the scene, without applying any specific filters.
+Uniqueness Requirement (unique(id, parent_id)): Ensures that the objects under consideration are unique, eliminating duplicates.
+Querying (query(id, parent_id, attribute)): This is used to retrieve specific information about the objects, such as their name or color.
+Relational Querying (relate(id, parent_id, relation, relation_type, object) and relate_any(id, parent_id, relation, object)): These commands query objects based on their relation to other objects or places within the scene.
+Attribute Choice (choose_attr(id, parent_id, attribute, option1, option2)): This command involves choosing between different attributes for an object, such as color options.
+Logical Combination (and(id, query1_id, query2_id)): This combines the results of two queries using logical 'AND'.
+End of Query (end(id)): Marks the conclusion of the query sequence.
+
+In summary, these sequences are a series of logical steps in ASP to query and manipulate a dataset, focusing on objects with specific attributes or in certain relations to other objects. 
+Each sequence represents a different type of query, ranging from simple existence checks to complex relational and attribute-based queries.
+
+An example of a question encoded is:
+
+scene(0).
+select(1, 0, aircraft).
+filter(2, 1, color, blue).
+unique(3, 2).
+query(4, 3, name).
+end(4).
+

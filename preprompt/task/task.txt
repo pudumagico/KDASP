@@ -1,0 +1,35 @@
+7. Your Task.
+
+Your task is to keep the ASP theory updated with rules that allows us to handle questions.
+We provide an initial theory that can handle some instances.
+The prompt input will consist of one or more questions in the ASP representation.
+If there are multiple questions, they are separeted by # symbols.
+
+Your task is to take questions and add rules to the theory such that it is able to handle them.
+
+THIS IS VERY IMPORTANT! 
+IF YOU BREAK ANY OF THESE RULES THE OUTPUT IS WRONG!
+
+1. You can only add rules to the theory.
+2. You can not remove any rules from the theory
+3. Do not add facts to the theory.
+4. Do not add comments to the theory.
+5. If you add a rule, it must have only one predicate as a head and that predicate should only have variables, except when strictly needed.
+6. The rules added must be between the comments '% Added rules to handle new instances' and '% End of Theory'
+7. Do not remove those comments.
+
+Only output the complete ASP theory, CONTAINING THE ORIGINAL AND NEW RULES.
+If you output any natural language, the answer is incorrect! 
+Do not write anything that are not explicit ASP rules.
+DO NOT ADD THE PROMPT TO THE THEORY.
+
+When adding a new rule. remember: 
+In ASP, the use of ; to represent logical disjunction in the body of a rule is not allowed. 
+Instead, we need to express disjunction through separate rules. 
+
+In ASP, a variable in a rule is considered unsafe when a variable appears in the head of a rule or in a negative literal in the body, but not in a positive literal.
+Examples of Unsafe Variables:
+Unsafe: a(X) :- not b(X). Here, X is unsafe because it is not defined in a positive literal in the body.
+Unsafe: a(Y) :- b(X). Here, Y is unsafe because it is not defined in a positive literal in the body.
+Unsafe: a(TO, no) :- not b(TO, TI), c(TI, ID).
+Safe: a(X) :- b(X), not c(X). In this case, X is safe because it appears in the positive literal b(X).

@@ -1,0 +1,31 @@
+7. Your Task.
+
+Your task is to extend the initial ASP theory we provided with new rules that allows us to calculate the correct answer.
+The prompt input will consist of one or more questions in the ASP representation.
+If there are multiple questions, they are separeted by # symbols.
+
+Your task is to take ASP questions and return ASP rules that are able to correctly process them.
+Recognize the predicate missing in the theory and implement it.
+
+THIS IS VERY IMPORTANT! 
+IF YOU BREAK ANY OF THESE RULES THE OUTPUT IS WRONG!
+
+1. Only output the new ASP Rules.
+2. Do not add output ASP facts.
+3. New rules should be as general as possible, i.e., have a low number of constants and high number of variables.
+4. New rules should be as general as possible.
+5. Do not use Code Block Format when returning the new rules, just plain text.
+6. Do not add any unsafe rules.
+7. Do not add recursive rules.
+
+Remember:
+
+In ASP, the use of ; to represent logical disjunction in the body of a rule is not allowed. 
+Instead, we need to express disjunction through separate rules. 
+
+In ASP, a variable in a rule is considered unsafe when a variable appears in the head of a rule or in a negative literal in the body, but not in a positive literal.
+Examples of Unsafe Variables:
+Unsafe: a(X) :- not b(X). Here, X is unsafe because it is not defined in a positive literal in the body.
+Unsafe: a(Y) :- b(X). Here, Y is unsafe because it is not defined in a positive literal in the body.
+Unsafe: a(TO, no) :- not b(TO, TI), c(TI, ID).
+Safe: a(X) :- b(X), not c(X). In this case, X is safe because it appears in the positive literal b(X).
