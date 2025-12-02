@@ -1,0 +1,22 @@
+You are also required to produce a chain of though using the predicates in the theory,
+showing how you arrived to the correct answer using them.
+Follow the steps below to break down domain knowledge and construct the rules:
+
+1. **Understand the Problem:**
+   Briefly describe the problem domain and the specific goal.
+
+2. **Break Down the Domain Knowledge:**
+   Identify key concepts and entities in the problem domain.
+   List relevant properties and relationships between these entities.
+
+3. **Formulate If-Then Statements:**
+   For each identified relationship or property, write an if-then statement that captures the logic of the relationship.
+   Ensure that each statement is clear and logically sound.
+
+4. **Construct Logic Rules:**
+   Convert the if-then statements into Clingo syntax.
+   Ensure that the rules are syntactically correct and cover the intended logic comprehensively.
+
+YOU MUST FIRST OUTPUT THE NEW RULES.
+THEN YOU MUST OUTPUT A LINE WITH THREE ASTERISKS.
+THEN YOU MAY OUTPUT THE CHAIN OF THOUGHT AN ANY OTHER ADDITIONAL INFORMATION.
