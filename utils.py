@@ -24,7 +24,7 @@ os.environ["OPENAI_API_KEY"] =  ""
 os.environ["MISTRAL_API_KEY"] = ""
 os.environ["HUGGINGFACE_API_KEY"] = ""
 os.environ['DEEPSEEK_API_KEY'] = ""
-os.environ['GEMINI_API_KEY'] = "AIzaSyAtUEqSt_DYMsSHD3wQ8XCQv38C4G0Gc-0"
+os.environ['GEMINI_API_KEY'] = ""
 
 def query(payload):
     response = requests.post(API_URL, headers=headers, json=payload)
