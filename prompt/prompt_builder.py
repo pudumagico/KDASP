@@ -147,7 +147,7 @@ class PromptBuilder:
             preprompt += multiple_answers
 
         if self.cot == 'complex':
-            cot = open('./preprompt/chain_of_thought_johannes.txt').readlines() 
+            cot = open('./preprompt/chain_of_thought_complex.txt').readlines() 
             preprompt += cot
 
         elif self.cot == 'simple':

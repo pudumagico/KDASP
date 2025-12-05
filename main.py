@@ -82,7 +82,7 @@ def main(args):
     date_str = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
 
     log_incumbent_theory(date_str,
-                         incumbent_theory, model, max_retries, learning_examples, current_example, batch_examples, remove_predicate, dataset, cot, multiple)
+                         incumbent_theory, model, max_retries, learning_examples, current_example, batch_examples, remove_predicate, dataset, cot, mending, multiple)
 
     if not learning_examples:
         learning_examples = len(examples)
@@ -250,7 +250,7 @@ def main(args):
                              incumbent_theory, model, max_retries, learning_examples, current_example, batch_examples, remove_predicate, dataset, cot, multiple)
 
     log_incumbent_theory(date_str,
-                         incumbent_theory, model, max_retries, learning_examples, current_example, batch_examples, remove_predicate, dataset, cot, multiple)
+                         incumbent_theory, model, max_retries, learning_examples, current_example, batch_examples, remove_predicate, dataset, cot, mending, multiple)
 
     final_correct_train = 0
     current_example = 0
@@ -285,9 +285,18 @@ def main(args):
     print(f"Syntax Mendings: {syntax_mending_success}")
     print(f"Semantic Mendings: {semantic_mending_success}")
 
-    write_to_log(f'./logs/{dataset}/{model}/{remove_predicate}/{date_str}/config_log.txt', seed, args, f"Final Training Correct Solutions: {final_correct_train}", f"Final Correct Solutions: {final_correct_test}", f"Average: {round(final_correct_test/learning_examples*100,2)}", f"Syntax Mendings: {syntax_mending_success}", f"Semantic Mendings: {semantic_mending_success}")
-    save_examples(f'./logs/{dataset}/{model}/{remove_predicate}/{date_str}/examples_used.txt', examples)
 
+    if cot:
+        base_log_dir = f"./logs/no_cot/{dataset}/{model}/{remove_predicate}"
+    elif mending:
+        base_log_dir = f"./logs/no_mending/{dataset}/{model}/{remove_predicate}"
+    elif multiple:
+        base_log_dir = f"./logs/no_multiple/{dataset}/{model}/{remove_predicate}"
+    else:
+        base_log_dir = f"./logs/{dataset}/{model}/{remove_predicate}"      
+
+    write_to_log(f'{base_log_dir}/{date_str}/config_log.txt', seed, args, f"Final Training Correct Solutions: {final_correct_train}", f"Final Correct Solutions: {final_correct_test}", f"Average: {round(final_correct_test/learning_examples*100,2)}", f"Syntax Mendings: {syntax_mending_success}", f"Semantic Mendings: {semantic_mending_success}")
+    save_examples(f'{base_log_dir}/{date_str}/examples_used.txt', examples)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
@@ -302,8 +311,8 @@ if __name__ == "__main__":
                         default=0, help="Number of batch examples")
     parser.add_argument("--model", type=str,
                         default="gpt-4-1106-preview", help="LLM model to be used")
-    parser.add_argument("--strategy", type=str, default="pred",
-                        help="Strategy used to sample examples")
+    parser.add_argument("--strategy", type=str, default="len",
+                        help="Strategy used to sample examples, len for length or pred for predicates.")
     parser.add_argument("--sample_sz", type=int, default=10,
                         help="Sample size for the strategy selected")
     parser.add_argument("--regressive_test", default=True, type=bool,
@@ -312,18 +321,18 @@ if __name__ == "__main__":
                         help="Representation to be used")
     parser.add_argument("--remove_random", type=int, default=0,
                         help="Remove a percentage of random lines from the perfect theory to use as initial theory.")
-    parser.add_argument("--remove_predicate", type=str, default="", 
+    parser.add_argument("--remove_predicate", type=str, default="color",
                         help="Remove any rule where the predicated selected appears in the perfect theory and use this as initial theory.")
     parser.add_argument("--state_mending", type=bool, default=False,
                         help="Use semantic mending with states of the program.")
     parser.add_argument("--batch_theory", type=str, default="",
                         help="Which batch theory to use.")
-    parser.add_argument("--dataset", type=str, default="",
-                        help="Which dataset to use, GQA or CLEVR.")   
+    parser.add_argument("--dataset", type=str, default="GQA",
+                        help="Which dataset to use, GQA, CLEVR or GLEGR.")   
     parser.add_argument("--chosen_theory", type=str, default="",
                         help="Path to a handchosen theory to fill.")   
     # Ablation flags
-    parser.add_argument("--no_multiple", action="store_true",
+    parser.add_argument("--no_multiple", default="store_true",
                         help="Deactivate strategy to generate multiple sets of rules.")
     parser.add_argument("--no_cot", action="store_true",
                         help="Deactivate chain of thought to explanations using the predicates.")
