@@ -12,19 +12,24 @@ import requests
 from dotenv import load_dotenv
 import os
 import torch
-load_dotenv()  # Loads variables from .env into environment
+load_dotenv()  
 
+openai_key = os.getenv("OPENAI_API_KEY")
+mistral_key = os.getenv("MISTRAL_API_KEY")
+huggingface_key = os.getenv("HUGGINGFACE_API_KEY")
+deepseek_key = os.getenv("DEEPSEEK_API_KEY")
+gemini_key = os.getenv("GEMINI_API_KEY")
 
 BEARER = ""
 
 API_URL = "https://router.huggingface.co/hyperbolic/v1/chat/completions"
 headers = {"Authorization": "Bearer " + BEARER}
 
-os.environ["OPENAI_API_KEY"] =  ""
-os.environ["MISTRAL_API_KEY"] = ""
-os.environ["HUGGINGFACE_API_KEY"] = ""
-os.environ['DEEPSEEK_API_KEY'] = ""
-os.environ['GEMINI_API_KEY'] = ""
+# os.environ["OPENAI_API_KEY"] =  ""
+# os.environ["MISTRAL_API_KEY"] = ""
+# os.environ["HUGGINGFACE_API_KEY"] = ""
+# os.environ['DEEPSEEK_API_KEY'] = ""
+# os.environ['GEMINI_API_KEY'] = ""
 
 def query(payload):
     response = requests.post(API_URL, headers=headers, json=payload)
